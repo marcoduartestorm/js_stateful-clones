@@ -6,7 +6,7 @@
  *
  * @return {Object[]}
  */
-function transformState2(state, actions) {
+function transformStateWithClones(state, actions) {
   const stateHistory = [];
 
   for (const obj of actions) {

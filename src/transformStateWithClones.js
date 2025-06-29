@@ -16,23 +16,20 @@ function transformStateWithClones(state, actions) {
         for (const key in obj.extraData) {
           Object.assign(stateTemp, { [key]: obj.extraData[key] });
         }
-        const stateTemp1 = { ...stateTemp };
-        stateHistory[stateHistory.length] = stateTemp1;
         break;
       case 'removeProperties':
         for (const key of obj.keysToRemove) {
           delete stateTemp[key];
         }
-        const stateTemp2 = { ...stateTemp };
-        stateHistory[stateHistory.length] = stateTemp2;
         break;
       case 'clear':
         for (const key in stateTemp) {
           delete stateTemp[key];
         }
-        const stateTemp3 = { ...stateTemp };
-        stateHistory[stateHistory.length] = stateTemp3;
     }
+
+    const stateTemp1 = { ...stateTemp };
+    stateHistory[stateHistory.length] = stateTemp1;
   }
 
   return stateHistory;
